@@ -8,8 +8,14 @@
  *
  *  Here is the IRQ Handler of the Timer for testing you can Define your ISR
  *
- *  Go to Startup file --> extren the custom Interrupt Handler extern void Timer_interrupt_Handler(void);
- *  Replace the DefaultHandler with custom one in vector table i.e(line:105) Timer_interrupt_Handler
+ *  Go to Startup file --> extren the custom Interrupt Handler
+
+       extern void Timer_interrupt_Handler(void);
+
+ *  Replace the DefaultHandler with custom one in vector table i.e
+
+       (line:105) Timer_interrupt_Handler
+
  *  Define the ISR in main code of any other header/source file and include it into the main i.e.
         bool flag = 0;
         void Timer_interrupt_Handler(void){
