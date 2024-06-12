@@ -31,14 +31,14 @@ void Timer_init(){
 
     // Enable the Clock for Timer0_A
     SYSCTL_RCGCTIMER_R |= SYSCTL_RCGCTIMER_R0;
-    /* Initially disable the Timers*/
-    TIMER0_CTL_R    &=  0;
+
+    TIMER0_CTL_R    &=  0;  /* Initially disable the Timers*/
     TIMER0_CFG_R    &=  0;  // Selection of 32-bit timer out of 16/32 bit option.
     TIMER0_TAMR_R   |=  (TIMER_TAMR_TAMR_PERIOD | (1<<4));  // Selection of Periodic Mode of Timer A  and Select the Direction of Timer is Increment
     TIMER0_TAILR_R  =   0x00F42400;    //  Time to count N Second = Frequency * N = 16MHz * 1 = F42400 = 16000000
     TIMER0_IMR_R    |=  TIMER_IMR_TATOIM;   // Enable interrupt on time-up
-    TIMER0_CTL_R    |=  1;
-    NVIC_EN0_R      |=  (1<<19);    // Enable 19th interrupt i.e. for Timer 0 A 16/32bit.
+    TIMER0_CTL_R    |=  1;  // Enable the Timer to Start Counting
+    NVIC_EN0_R      |=  (1<<19);    // Enable 19th interrupt i.e. for Timer0_A 16/32bit.
 
 
 }
